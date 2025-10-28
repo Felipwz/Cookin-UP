@@ -18,14 +18,18 @@
 </template>
 
 <script lang="ts">
-import { obteCategorias } from '@/http/index';
+import { obterCategorias } from '../';
 
 export default {
   data() {
     return{
-        categorias: obteCategorias()
+        categorias: []
     }
   },
+
+  async created(){
+    this.categorias = await obterCategorias();
+  }
 };
 </script>
 
