@@ -18,21 +18,18 @@
 </template>
 
 <script lang="ts">
-import type ICategoria from '@/interfaces/ICategoria';
-import { obterCategorias } from '../http/index';
+import { obterCategorias, type Categoria } from '../http/index';
 
 export default {
   data() {
     return{
-        categorias:[] as ICategoria[];
+        categorias:[] as Categoria[]
     }
   },
 
   async mounted(){
     this.categorias = await obterCategorias();
-  },
-  
-
+  }
 };
 </script>
 <style scoped>
