@@ -1,14 +1,12 @@
-export function obteCategorias(){
-    return [
-  {
-    "nome": "Laticínios e Ovos",
-    "ingredientes": ["Ovos", "Queijo", "Leite", "Manteiga", "Creme de Leite", "Iogurte", "Leite Condensado", "Sorvete"],
-    "rotulo": "laticinios_e_ovos"
-  },
-  {
-    "nome": "Farinhas e Fermentos",
-    "ingredientes": ["Farinha de trigo", "Polvilho", "Farinha de rosca", "Canjica", "Farinha de mandioca", "Fubá", "Linhaça", "Fermento químico"],
-    "rotulo": "farinhas_e_fermentos"
+import type ICategoria from '@/interfaces/ICategoria';
+
+export async function obterCategorias(){
+  const response = await fetch('https://api.jsonbin.io/v3/b/68fecf60ae596e708f2f3273');
+
+  if(!response.ok){
+    throw new Error(`Erro ao buscar receitas: ${response.status}`);
   }
-]
+
+  const data: ICategoria[] = await response.json();
+  return data;
 }

@@ -18,17 +18,23 @@
 </template>
 
 <script lang="ts">
-import { obteCategorias } from '@/http/index';
+import type ICategoria from '@/interfaces/ICategoria';
+import { obterCategorias } from '../http/index';
 
 export default {
   data() {
     return{
-        categorias: obteCategorias()
+        categorias:[] as ICategoria[];
     }
   },
+
+  async mounted(){
+    this.categorias = await obterCategorias();
+  },
+  
+
 };
 </script>
-
 <style scoped>
 .selecionar-ingredientes {
   display: flex;
