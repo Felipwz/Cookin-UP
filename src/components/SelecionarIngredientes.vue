@@ -8,7 +8,8 @@
 
     <ul class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        {{ categoria.nome }}</li>
+        <CardCategoria :categoria="categoria" />
+      </li>
     </ul>
 
     <p class="paragrafo dica">
@@ -18,18 +19,25 @@
 </template>
 
 <script lang="ts">
-import { obterCategorias, type Categoria } from '../http/index';
+import { obterCategorias, type Categoria } from "../http/index";
+import CardCategoria from "./CardCategoria.vue";
 
 export default {
-  data() {
-    return{
-        categorias:[] as Categoria[]
-    }
+  components: {
+    CardCategoria,
   },
 
-  async mounted(){
+  data() {
+    return {
+      categorias: [] as Categoria[],
+    };
+  },
+
+  async created() {
     this.categorias = await obterCategorias();
-  }
+  },
+
+  
 };
 </script>
 <style scoped>
