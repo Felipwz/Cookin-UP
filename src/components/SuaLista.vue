@@ -1,0 +1,63 @@
+<template>
+     <section>
+            <span class="subtitulo-lg sua-lista-texto">
+                Sua lista:
+            </span>
+            <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
+                <li v-for="ingrediente in ingredientes" :key="ingrediente" class="ingrediente">
+                    <Tag :texto="ingrediente" :ativa="true"/>
+                     
+                </li>
+            </ul>
+
+            <p v-else class="paragrafo lista-vazia" >
+              <img src="../assets/imagens-main/icones/lista-vazia.svg" alt="Imagem lista fazia">
+              Sua lista está vazia, selecione ingredientes para iniciar.
+            </p>
+        </section>
+</template>
+
+<script lang="ts">
+import type ICategoria from '@/interfaces/ICategoria';
+import type { PropType } from 'vue';
+import Tag from './Tag.vue';
+
+export default{
+  components:{ Tag },
+  props:{
+     ingredientes: { type: Array as PropType<string[]>, required: true }
+  },
+
+    data(){
+    
+    }
+}
+</script>
+
+<style>
+.sua-lista-texto {
+  color: var(--coral, #F0633C);
+  display: block;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  
+}
+
+.ingredientes-sua-lista {
+  display: flex;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.lista-vazia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+
+  color: var(--coral, #F0633C);
+  text-align: center;
+}
+</style>

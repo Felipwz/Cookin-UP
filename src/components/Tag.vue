@@ -1,5 +1,5 @@
 <template>
-  <span :class="['tag', {ativa}]">
+  <span :class="['tag', {ativa: ativa}]">
     {{ texto }}
   </span>
 </template>
