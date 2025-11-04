@@ -1,15 +1,10 @@
 <template>
-  <button
-    class="ingrediente"
-    @click="aoClicar"
-    :aria-pressed="selecionado"
-  >
+  <button class="ingrediente" @click="aoClicar" :aria-pressed="selecionado">
     <Tag :texto="ingrediente" :ativa="selecionado" />
   </button>
 </template>
 
 <script lang="ts">
-import { setEmitFlags } from "typescript";
 import Tag from "./Tag.vue";
 
 export default {
@@ -25,16 +20,18 @@ export default {
     };
   },
 
-  methods:{
-    aoClicar(){
-      this.selecionado = !this.selecionado
+  methods: {
+    aoClicar() {
+      this.selecionado = !this.selecionado;
 
-      if(this.selecionado){
-        this.$emit('adicionarIngrediente', this.ingrediente)
+      if (this.selecionado) {
+        this.$emit("adicionarIngrediente", this.ingrediente);
+      } else{
+        this.$emit("retirarIngrediente", this.ingrediente);
       }
-    }
+    },
   },
-  emits:['adicionarIngrediente']
+  emits: ["adicionarIngrediente", "retirarIngrediente"],
 };
 </script>
 

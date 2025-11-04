@@ -13,6 +13,7 @@
         <IngredienteSelecionavel 
         :ingrediente="ingrediente"
         @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+        @retirar-ingrediente="$emit('retirarIngrediente', $event)"
         />
       </li>
     </ul>
@@ -31,7 +32,7 @@ export default {
     categoria: { type: Object as PropType<ICategoria>, required: true },
   },
 
-  emits:['adicionarIngrediente']
+  emits:['adicionarIngrediente', 'retirarIngrediente']
 };
 </script>
 

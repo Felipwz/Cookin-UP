@@ -3,16 +3,21 @@
     <SuaLista :ingredientes="ingredientes" />
     <selecionarIngredientes
       @adicionar-ingrediente="adicionarIngredientes"
+      @retirar-ingrediente="retirarIngrediente"
     />
+    <BotaoPrincipal/>
   </main>
+  <Rodape/>
 </template>
 
 <script lang="ts">
+import BotaoPrincipal from "./BotaoPrincipal.vue";
+import Rodape from "./Rodape.vue";
 import SelecionarIngredientes from "./SelecionarIngredientes.vue";
 import SuaLista from "./SuaLista.vue";
 
 export default {
-  components: { SelecionarIngredientes, SuaLista },
+  components: { SelecionarIngredientes, SuaLista, BotaoPrincipal, Rodape},
 
   data() {
     return {
@@ -20,11 +25,15 @@ export default {
     };
   },
 
-  methods:{
-    adicionarIngredientes(ingrediente:string){
-      this.ingredientes.push(ingrediente)
-    }
-  }
+  methods: {
+    adicionarIngredientes(ingrediente: string) {
+      this.ingredientes.push(ingrediente);
+    },
+
+    retirarIngrediente(ingrediente: string) {
+      this.ingredientes = this.ingredientes.filter((i) => i !== ingrediente);
+    },
+  },
 };
 </script>
 

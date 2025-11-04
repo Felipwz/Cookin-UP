@@ -11,6 +11,7 @@
         <CardCategoria
           :categoria="categoria"
           @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+          @retirar-ingrediente="$emit('retirarIngrediente', $event)"
         />
       </li>
     </ul>
@@ -30,7 +31,7 @@ export default {
     CardCategoria,
   },
   
-  emits:['adicionarIngrediente'],
+  emits:['adicionarIngrediente',  'retirarIngrediente'],
 
   data() {
     return {
