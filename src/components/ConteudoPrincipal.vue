@@ -1,34 +1,38 @@
 <template>
-       <main class="conteudo-principal">
-        <SuaLista :ingredientes="ingredientes"/>
-        <selecionarIngredientes/>
-       </main>
+  <main class="conteudo-principal">
+    <SuaLista :ingredientes="ingredientes" />
+    <selecionarIngredientes
+      @adicionar-ingrediente="adicionarIngredientes"
+    />
+  </main>
 </template>
 
-
-
 <script lang="ts">
-import SelecionarIngredientes from './SelecionarIngredientes.vue';
-import SuaLista from './SuaLista.vue';
+import SelecionarIngredientes from "./SelecionarIngredientes.vue";
+import SuaLista from "./SuaLista.vue";
 
+export default {
+  components: { SelecionarIngredientes, SuaLista },
 
-export default{
+  data() {
+    return {
+      ingredientes: [] as string[],
+    };
+  },
 
-components:{ SelecionarIngredientes, SuaLista},
-
-data(){
-    return{
-        ingredientes:['Alho', 'Manteiga', 'Orégano', 'Azeite'],
+  methods:{
+    adicionarIngredientes(ingrediente:string){
+      this.ingredientes.push(ingrediente)
     }
-}
-}
+  }
+};
 </script>
 
-<style  scoped>
+<style scoped>
 .conteudo-principal {
   padding: 6.5rem 7.5rem;
   border-radius: 3.75rem 3.75rem 0rem 0rem;
-  background: var(--creme, #FFFAF3);
+  background: var(--creme, #fffaf3);
   color: var(--cinza, #444);
 
   display: flex;
@@ -38,11 +42,10 @@ data(){
 }
 
 .sua-lista-texto {
-  color: var(--coral, #F0633C);
+  color: var(--coral, #f0633c);
   display: block;
   text-align: center;
   margin-bottom: 1.5rem;
-  
 }
 
 .ingredientes-sua-lista {
@@ -52,8 +55,6 @@ data(){
   flex-wrap: wrap;
 }
 
-
-
 .lista-vazia {
   display: flex;
   justify-content: center;
@@ -61,7 +62,7 @@ data(){
   flex-wrap: wrap;
   gap: 0.25rem;
 
-  color: var(--coral, #F0633C);
+  color: var(--coral, #f0633c);
   text-align: center;
 }
 

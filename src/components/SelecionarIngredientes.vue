@@ -8,7 +8,10 @@
 
     <ul class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        <CardCategoria :categoria="categoria" />
+        <CardCategoria
+          :categoria="categoria"
+          @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+        />
       </li>
     </ul>
 
@@ -26,6 +29,8 @@ export default {
   components: {
     CardCategoria,
   },
+  
+  emits:['adicionarIngrediente'],
 
   data() {
     return {
