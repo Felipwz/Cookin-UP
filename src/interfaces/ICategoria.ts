@@ -4,3 +4,10 @@ export default interface ICategoria{
     imagem: string;
     
 }
+
+export default interface IReceita{
+    nome: string;
+    ingredientes: string[];
+    imagem: string;
+    
+}
