@@ -19,19 +19,22 @@
     <p class="paragrafo dica">
       *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
+    <BotaoPrincipal texto="Buscar receitas!" @click="$emit('buscarReceitas')" />
   </section>
 </template>
 
 <script lang="ts">
 import { obterCategorias, type Categoria } from "../http/index";
+import BotaoPrincipal from "./BotaoPrincipal.vue";
 import CardCategoria from "./CardCategoria.vue";
 
 export default {
   components: {
     CardCategoria,
+    BotaoPrincipal,
   },
-  
-  emits:['adicionarIngrediente',  'retirarIngrediente'],
+
+  emits: ["adicionarIngrediente", "retirarIngrediente", "buscarReceitas"],
 
   data() {
     return {
@@ -42,8 +45,6 @@ export default {
   async created() {
     this.categorias = await obterCategorias();
   },
-
-  
 };
 </script>
 <style scoped>

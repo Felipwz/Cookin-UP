@@ -1,27 +1,32 @@
 <template>
   <main class="conteudo-principal">
     <SuaLista :ingredientes="ingredientes" />
-    <selecionarIngredientes
+    <selecionarIngredientes v-if="conteudo === 'SelecionarIngrediente'"
       @adicionar-ingrediente="adicionarIngredientes"
       @retirar-ingrediente="retirarIngrediente"
+      @buscar-receitas="navegar('MostrarReceitas')"
     />
-    <BotaoPrincipal/>
+
+    <MostrarReceitas v-else-if="conteudo === 'MostrarReceitas'"/>
+
   </main>
-  <Rodape/>
 </template>
 
 <script lang="ts">
 import BotaoPrincipal from "./BotaoPrincipal.vue";
-import Rodape from "./Rodape.vue";
+import MostrarReceitas from "./MostrarReceitas.vue";
 import SelecionarIngredientes from "./SelecionarIngredientes.vue";
 import SuaLista from "./SuaLista.vue";
 
+type Pagina = 'SelecionarIngrediente' | 'MostrarReceitas'
+
 export default {
-  components: { SelecionarIngredientes, SuaLista, BotaoPrincipal, Rodape},
+  components: { SelecionarIngredientes, SuaLista, BotaoPrincipal, MostrarReceitas},
 
   data() {
     return {
       ingredientes: [] as string[],
+      conteudo: 'SelecionarIngrediente' as Pagina
     };
   },
 
@@ -33,6 +38,10 @@ export default {
     retirarIngrediente(ingrediente: string) {
       this.ingredientes = this.ingredientes.filter((i) => i !== ingrediente);
     },
+
+    navegar(pagina: Pagina){
+      this.conteudo = pagina
+    }
   },
 };
 </script>

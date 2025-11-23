@@ -1,23 +1,22 @@
 <template>
-  <Banner/>
-  <ConteudoPrincipal/>
-  <Hooks/>
+  <Banner />
+  <ConteudoPrincipal />
+  <Hooks /> 
+  <Rodape/>
 </template>
 
 <script lang="ts">
-import Banner from './components/Banner.vue';
-import ConteudoPrincipal from './components/ConteudoPrincipal.vue';
+import Banner from "./components/Banner.vue";
+import ConteudoPrincipal from "./components/ConteudoPrincipal.vue";
+import Rodape from "./components/Rodape.vue";
 
-export default{
-  components: {Banner, ConteudoPrincipal},
-
-  data() {
-    
+export default {
+  components: {
+    Banner,
+    ConteudoPrincipal,
+    Rodape
   },
 
-
-  
-}
-
-
+  data() {},
+};
 </script>
